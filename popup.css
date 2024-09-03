@@ -1,0 +1,22 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+}
+
+body {
+    width: 20rem;
+    background-color: aqua;
+}
+
+#options {
+    display: flex;
+    align-content: space-between;
+}
+
+/* .button-switch {
+    display: flex;
+    align-items: flex-end;
+} */

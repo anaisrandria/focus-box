@@ -1,22 +1,35 @@
-* {
+body {
+    background-color: rgb(255, 255, 255);
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    list-style: none;
+    width: 15rem;
+    list-style: none
+  }
+
+h1 {
+  border: 1px solid rgba(255, 0, 0, 0);
+  font-size: 28px;
+  color: rgb(0, 0, 0);
+  font-family:'Times New Roman', Times, serif
 }
 
-body {
-    width: 20rem;
-    background-color: aqua;
+.switch-container {
+border: 1px solid rgba(255, 0, 0, 0);
+display: flex;
 }
 
-#options {
-    display: flex;
-    align-content: space-between;
+#switch-text {
+border: 1px solid rgba(255, 255, 255, 0);
+color: rgb(0, 0, 0);
+font-family:'Times New Roman', Times, serif
+display: flex;
+flex-direction: column;
+margin-right: 1rem;
 }
 
-/* .button-switch {
-    display: flex;
-    align-items: flex-end;
-} */
+#switch-button {
+border: 1px solid rgba(30, 0, 255, 0);
+display: flex;
+flex-direction: column; 
+gap: 9.5%;
+}

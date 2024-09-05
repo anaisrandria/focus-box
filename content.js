@@ -7,18 +7,18 @@ const buttonLetterSpace = document.querySelector("#letter-space");
 // document.addEventListener("DOMContentLoaded", () => {
 // const buttonFont = document.querySelector("#font");
 buttonFont.addEventListener("click", () => {
-	chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-		chrome.scripting.executeScript({
-			target: { tabId: tabs[0].id },
-			func: changeFont,
-		});
-	});
+  chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+    chrome.scripting.executeScript({
+      target: { tabId: tabs[0].id },
+      func: changeFont,
+    });
+  });
 });
 // });
 
 function changeFont() {
-	const allParagraphes = document.querySelectorAll("p");
-	allParagraphes.forEach((p) => {
-		p.style.backgroundColor = "red";
-	});
+  const allParagraphes = document.querySelectorAll("p");
+  allParagraphes.forEach((p) => {
+    p.style.backgroundColor = "red";
+  });
 }

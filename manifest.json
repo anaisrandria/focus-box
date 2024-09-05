@@ -9,10 +9,8 @@
     "48": "images/icon-48.png",
     "128": "images/icon-128.png"
   },
-  "host_permissions": [
-    "<all_urls>"
-  ],
- "permissions": ["activeTab", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "permissions": ["activeTab", "scripting"],
   "action": {
     "default_popup": "popup.html"
   },
@@ -26,4 +24,3 @@
     "service-worker": "background.js"
   }
 }
-

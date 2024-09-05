@@ -3,32 +3,60 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="Logo/MagicBox.jpeg" />
     <link rel="stylesheet" href="popup.css">
-    <title>Extension</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
+    </style>
+    <title>Magic Box</title>
     <script src="content.js" defer></script>
 </head>
 <body>
 
-    <h1>EXTENSION</h1>
+<div class="MagicBox-container"> 
+
+<div class="banner-container">
     
-<div class="button-container">
+  <label for="magicBox-title"><img id="MagicBox-logo" src="Logo/MagicBox.jpeg"></label>
+  <h1 id="magicBox-title" name="magicBox-title">Magic Box</h1>
+
+</div>    
+
+    <div class="button-container">
 
     <div class="switch-options">
-        <label for="remover" class="name-button">block remover</label><input class="switch-button" type="checkbox" id="remover" name="remover"></input>
+        <label for="remover" class="name-button">block remover</label>
+        <input class="switch-button" type="checkbox" id="remover" name="remover"></input>
     </div>
+
     <div class="slide-options">
-        <label for="font" class="name-button">Change font</label><input class="slide-button" type="checkbox" id="font" name="font"></input>
+     <label for="font" class="name-button">Change font</label>
+     <select name="font" id="font">
+         <option value="">Default</option>
+         <option value="1">Font 1</option>
+         <option value="2">Font 2</option>
+         <option value="3">Font 3</option>
+     </select>
     </div>
+
     <div class="range-options">
-        <label for="font-size" class="name-button">font size</label><input class="range-button" type="range" min="1" max="100" value="1" id="font-size" name="font-size"></input>
+        <label for="font-size" class="name-button">font size</label>
+        <input class="range-button" type="range" min="1" max="100" value="1" id="font-size" name="font-size"></input>
     </div>
+
     <div class="range-options">
-        <label for="line-height" class="name-button">line height</label><input class="range-button" type="range" min="1" max="100" value="1" id="line-height" name="line-height"></input>
+        <label for="line-height" class="name-button">line height</label>
+        <input class="range-button" type="range" min="1" max="100" value="1" id="line-height" name="line-height"></input>
     </div>
+
     <div class="range-options">
-        <label for="letter-space" class="name-button">letter space</label><input class="range-button" type="range" min="1" max="100" value="1" id="letter-space" name="letter-space"></input>
+        <label for="letter-space" class="name-button">letter space</label>
+        <input class="range-button" type="range" min="1" max="100" value="1" id="letter-space" name="letter-space"></input>
     </div>
+    </div>
+
 </div>
+
 </body>
 </html>
 

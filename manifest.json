@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "AGAR extension",
+  "name": "Magic box",
   "version": "1.0.0",
   "description": "Customize your webpage and choose your focus!",
   "icons": {
@@ -16,7 +16,7 @@
   },
   "content_scripts": [
     {
-      "js": ["content.js"],
+      "js": ["content.js", "default-settings.js"],
       "matches": ["<all_urls>"]
     }
   ],

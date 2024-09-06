@@ -34,17 +34,16 @@ let settings = {
 	}
 };
 
-// ------------ FONCTIONS POUR CUSTOMISER LA PAGE ------------ //
 
+// ------------ FONCTIONS POUR CUSTOMISER LA PAGE ------------ //
 
 function changeFont() {
 	const allParagraphes = document.querySelectorAll("p");
 	allParagraphes.forEach((p) => {
 		p.style.fontFamily = "Tahoma";
 		settings.buttonFont.customValue = window.getComputedStyle(p, null).getPropertyValue("font-family");
-		console.log(`🐔 Font family Default Value is: ${settings.buttonFont.defaultValue}`);
-		console.log(`🐝 Font family Custom Value is: ${settings.buttonFont.customValue}`);
 	});
+	console.log("🦄 update font-family is:", settings);
 };
 
 function changeFontSize() {
@@ -56,9 +55,8 @@ function changeFontSize() {
 		p.style.overflowWrap = "break-word";
 		p.style.hyphens = "auto";
 		settings.buttonFontSize.customValue = window.getComputedStyle(p, null).getPropertyValue("font-size");
-		console.log(`🐔 Font size Default Value is: ${settings.buttonFontSize.defaultValue}`);
-		console.log(`🐝 Font size Custom Value is: ${settings.buttonFontSize.customValue}`);
 	});
+	console.log("🐣 update font-size is:", settings);
 };
 
 
@@ -67,9 +65,8 @@ function changeLineHeight() {
 	allParagraphes.forEach((p) => {
 		p.style.lineHeight = "1.4em";
 		settings.buttonLineHeight.customValue = window.getComputedStyle(p, null).getPropertyValue("line-height");
-		console.log(`🐔 Line height Default Value is: ${settings.buttonLineHeight.defaultValue}`);
-		console.log(`🐝 Line height Custom Value is: ${settings.buttonLineHeight.customValue}`);
 	});
+	console.log("🐸 update line-height is:", settings);
 };
 
 function changeLetterSpacing() {
@@ -77,10 +74,11 @@ function changeLetterSpacing() {
 	allParagraphes.forEach((p) => {
 		p.style.letterSpacing = "0.8rem";
 		settings.buttonLetterSpacing.customValue = window.getComputedStyle(p, null).getPropertyValue("letter-spacing");
-		console.log(`🐔 Letter space Default Value is: ${settings.buttonLetterSpacing.defaultValue}`);
-		console.log(`🐝 Letter space Custom Value is: ${settings.buttonLetterSpacing.customValue}`);
 	});
+	console.log("🐙 update letter-spacing is:", settings);
 };
+
+console.log("🐍 initial settings object is:", settings);
 
 
 // ------------ GESTION DES BOUTONS ------------ //

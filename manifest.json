@@ -16,7 +16,7 @@
   },
   "content_scripts": [
     {
-      "js": ["content.js"],
+      "js": ["content.js", "default-settings.js"],
       "matches": ["<all_urls>"]
     }
   ],

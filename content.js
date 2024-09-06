@@ -1,46 +1,49 @@
 const buttonFont = document.querySelector("#font");
 const buttonFontSize = document.querySelector("#font-size");
 const buttonLineHeight = document.querySelector("#line-height");
-const buttonLetterSpace = document.querySelector("#letter-space");
+const buttonLetterSpacing = document.querySelector("#letter-spacing");
 const buttonRemover = document.querySelector("#remover");
 
 let settings = {
 	buttonFont: {
 		status: false,
 		styleProperty: "fontFamily",
-		value: null
+		defaultValue: null,
+		customValue: null
 	},
 	buttonFontSize: {
 		status: false,
 		styleProperty: "fontSize",
-		value: null
+		defaultValue: null,
+		customValue: null
 	},
 	buttonLineHeight: {
 		status: false,
 		styleProperty: "lineHeight",
-		value: null
+		defaultValue: null,
+		customValue: null
 	},
-	buttonLetterSpace: {
+	buttonLetterSpacing: {
 		status: false,
-		styleProperty: "letterSpace",
-		value: null
+		styleProperty: "letterSpacing",
+		defaultValue: null,
+		customValue: null
 	},
 	buttonRemover: {
 		status: false,
 	}
 };
 
-// ------------------ FONCTIONS -----------------------------------------------
+
+// ------------ FONCTIONS POUR CUSTOMISER LA PAGE ------------ //
 
 function changeFont() {
 	const allParagraphes = document.querySelectorAll("p");
 	allParagraphes.forEach((p) => {
-		settings.buttonFont.value = window.getComputedStyle(p, null).getPropertyValue("font-family")
-		console.log(`La 1ère valeur de buttonFont: ${settings.buttonFont.value}`);
-		console.log(`La police par défaut est: ${window.getComputedStyle(p, null).getPropertyValue("font-family")}`);
 		p.style.fontFamily = "Tahoma";
-		console.log(`La nouvelle police est ${window.getComputedStyle(p, null).getPropertyValue("font-family")}`);
+		settings.buttonFont.customValue = window.getComputedStyle(p, null).getPropertyValue("font-family");
 	});
+	console.log("🦄 update font-family is:", settings);
 };
 
 function changeFontSize() {
@@ -50,51 +53,45 @@ function changeFontSize() {
 		p.style.lineHeight = "1.5em";
 		p.style.boxSizing = "border-box";
 		p.style.overflowWrap = "break-word";
+		p.style.hyphens = "auto";
+		settings.buttonFontSize.customValue = window.getComputedStyle(p, null).getPropertyValue("font-size");
 	});
+	console.log("🐣 update font-size is:", settings);
 };
 
-function resetFont() {
-	const allParagraphes = document.querySelectorAll("p");
-	allParagraphes.forEach((p) => {
-		p.reset();
-	});
-	buttonFontActive = true;
-	return buttonFontActive;
-};
 
 function changeLineHeight() {
 	const allParagraphes = document.querySelectorAll("p");
 	allParagraphes.forEach((p) => {
-		p.style.lineHeight = "1.4rem";
+		p.style.lineHeight = "1.4em";
+		settings.buttonLineHeight.customValue = window.getComputedStyle(p, null).getPropertyValue("line-height");
 	});
+	console.log("🐸 update line-height is:", settings);
 };
 
-// function changeLetterSpacing() {
-// 	const allParagraphes = document.querySelectorAll("p");
-// 	allParagraphes.forEach((p) => {
-// 		p.style.letterSpacing = "0.8rem";
-// 	});
-// };
+function changeLetterSpacing() {
+	const allParagraphes = document.querySelectorAll("p");
+	allParagraphes.forEach((p) => {
+		p.style.letterSpacing = "0.8rem";
+		settings.buttonLetterSpacing.customValue = window.getComputedStyle(p, null).getPropertyValue("letter-spacing");
+	});
+	console.log("🐙 update letter-spacing is:", settings);
+};
 
-// ------------------ GESTION DES BOUTONS ----------------------------------------
+console.log("🐍 initial settings object is:", settings);
+
+
+// ------------ GESTION DES BOUTONS ------------ //
+
 buttonFont.addEventListener("click", () => {
 	chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-		// if (buttonFontActive === true) {
 		chrome.scripting.executeScript({
 			target: { tabId: tabs[0].id },
 			func: changeFont,
 		});
-		// chrome.scripting.then(
-		// 	console.log(`valeur bouton Font active : ${buttonFontActive}`)
-		// );
-		// } else {
-		// chrome.scripting.executeScript({
-		// 	target: { tabId: tabs[0].id },
-		// 	func: resetFont,
-		// });
-		// }
 	});
 });
+
 
 buttonFontSize.addEventListener("click", () => {
 	chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
@@ -114,14 +111,11 @@ buttonLineHeight.addEventListener("click", () => {
 	});
 });
 
-// buttonLetterSpace.addEventListener("click", () => {
-// 	chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-// 		chrome.scripting.executeScript({
-// 			target: { tabId: tabs[0].id },
-// 			func: changeLetterSpacing,
-// 		});
-// 	});
-// });
-
-// réinitialiser les paramètres
-// document.getElementById("myform").reset();
+buttonLetterSpacing.addEventListener("click", () => {
+	chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+		chrome.scripting.executeScript({
+			target: { tabId: tabs[0].id },
+			func: changeLetterSpacing,
+		});
+	});
+});

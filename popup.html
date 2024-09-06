@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="Logo/MagicBox.jpeg" />
+    <link rel="shortcut icon" href="Logo/MagicBox.png" />
     <link rel="stylesheet" href="popup.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
@@ -17,7 +17,7 @@
 
 <div class="banner-container">
     
-  <label for="magicBox-title"><img id="MagicBox-logo" src="Logo/MagicBox.jpeg"></label>
+  <label for="magicBox-title"><img id="MagicBox-logo" src="Logo/MagicBox.png"></label>
   <h1 id="magicBox-title" name="magicBox-title">Magic Box</h1>
 
 </div>    
@@ -29,7 +29,7 @@
         <input class="switch-button" type="checkbox" id="remover" name="remover"></input>
     </div>
 
-    <div class="slide-options">
+    <div class="select-options">
      <label for="font" class="name-button">Choose your font</label>
      <select name="font" id="font">
          <option value="">Default</option>
@@ -41,7 +41,7 @@
 
     <div class="range-options">
         <label for="font-size" class="name-button">Font-Size</label>
-        <input class="range-button" type="range" min="1" max="100" value="1" id="font-size" name="font-size"></input>
+        <input class="range-button" type="range" min="1" max="100" value="50" step="any" id="font-size" name="font-size"></input>
     </div>
 
     <div class="range-options">
@@ -53,6 +53,11 @@
         <label for="letter-space" class="name-button">Letter-Spacing</label>
         <input class="range-button" type="range" min="1" max="100" value="1" id="letter-space" name="letter-space"></input>
     </div>
+    
+    <div class="reset-options">
+        <button class="reset-button" id="reset">Reset</button>
+    </div>
+
     </div>
 
 </div>

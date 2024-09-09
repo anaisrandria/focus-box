@@ -1,13 +1,13 @@
 // ------------ FONCTIONS POUR RECUPERER LES VALEURS PAR DEFAUT ------------ // 
 
 function getDefaultValue() {
-	const allParagraphes = document.querySelectorAll("p");
+	const allParagraphes = document.querySelectorAll(allTags);
     if (!settings.buttonFont.defaultValue) {
-        allParagraphes.forEach((p) => {
-            settings.buttonFont.defaultValue = window.getComputedStyle(p, null).getPropertyValue("font-family");
-            settings.buttonFontSize.defaultValue = window.getComputedStyle(p, null).getPropertyValue("font-size");
-            settings.buttonLineHeight.defaultValue = window.getComputedStyle(p, null).getPropertyValue("line-height");
-            settings.buttonLetterSpacing.defaultValue = window.getComputedStyle(p, null).getPropertyValue("letter-spacing");
+        allParagraphes.forEach((tag) => {
+            settings.buttonFont.defaultValue = window.getComputedStyle(tag, null).getPropertyValue("font-family");
+            settings.buttonFontSize.defaultValue = window.getComputedStyle(tag, null).getPropertyValue("font-size");
+            settings.buttonLineHeight.defaultValue = window.getComputedStyle(tag, null).getPropertyValue("line-height");
+            settings.buttonLetterSpacing.defaultValue = window.getComputedStyle(tag, null).getPropertyValue("letter-spacing");
         });
     };
 };

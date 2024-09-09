@@ -33,17 +33,17 @@
 
     <div class="select-options">
      <label for="font" class="name-button">Choose your font</label>
-     <select value= "" name="font" id="font">
-         <option value="">Default</option>
-         <option value="1">Font 1</option>
-         <option value="2">Font 2</option>
-         <option value="3">Font 3</option>
+     <select id="font">
+         <option value="default" class="select">Default</option>
+         <option value="arial" class="select">Arial</option>
+         <option value="verdana" class="select">Verdana</option>
+         <option value="helvetica" class="select">Helvetica</option>
      </select>
     </div>
 
     <div class="range-options">
         <label for="font-size" class="name-button">Font-Size</label>
-        <input class="range-button" type="range" min="1" max="100" value="50" step="any" id="font-size" name="font-size"></input>
+        <input class="range-button" type="range" min="12" max="48" step="any" id="font-size" name="font-size"></input>
     </div>
 
     <div class="range-options">
@@ -57,7 +57,7 @@
     </div>
     
     <div class="reset-options">
-        <input type="reset" class="reset-button"value="Reset"id="reset"></input>
+        <input type="reset" class="reset-button" value="Reset" id="reset"></input>
     </div>
 
     </form>

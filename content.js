@@ -8,31 +8,31 @@ const allTags = "p, h1, h2, h3, h4, h5, h6, li, ul, ol, a, strong, em, i, span, 
 
 let settings = {
 	buttonFont: {
-		status: false,
+		// status: false,
 		styleProperty: "fontFamily",
 		defaultValue: null,
 		customValue: null
 	},
 	buttonFontSize: {
-		status: false,
+		// status: false,
 		styleProperty: "fontSize",
 		defaultValue: null,
 		customValue: null
 	},
 	buttonLineHeight: {
-		status: false,
+		// status: false,
 		styleProperty: "lineHeight",
 		defaultValue: null,
 		customValue: null
 	},
 	buttonLetterSpacing: {
-		status: false,
+		// status: false,
 		styleProperty: "letterSpacing",
 		defaultValue: null,
 		customValue: null
 	},
 	buttonRemover: {
-		status: false,
+		// status: false,
 	}
 };
 
@@ -61,7 +61,6 @@ function changeFontSize() {
 	});
 	console.log("🐣 update font-size is:", settings);
 };
-
 
 function changeLineHeight() {
 	const allParagraphes = document.querySelectorAll(allTags);

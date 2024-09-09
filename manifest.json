@@ -16,7 +16,7 @@
   },
   "content_scripts": [
     {
-      "js": ["content.js", "default-settings.js"],
+      "js": ["content.js", "default-settings.js", "reset.js"],
       "matches": ["<all_urls>"]
     }
   ],

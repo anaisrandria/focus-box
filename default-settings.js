@@ -1,7 +1,7 @@
 // ------------ FONCTIONS POUR RECUPERER LES VALEURS PAR DEFAUT ------------ // 
 
 function getDefaultValue() {
-	const allParagraphes = document.querySelectorAll(allTags);
+	const allParagraphes = document.querySelectorAll("*");
     if (!settings.buttonFont.defaultValue) {
         allParagraphes.forEach((tag) => {
             settings.buttonFont.defaultValue = window.getComputedStyle(tag, null).getPropertyValue("font-family");

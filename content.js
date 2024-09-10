@@ -15,16 +15,22 @@ let settings = {
 		styleProperty: "fontSize",
 		defaultValue: null,
 		customValue: null,
+		minValue: 12,
+		maxValue: 48,
 	},
 	buttonLineHeight: {
 		styleProperty: "lineHeight",
 		defaultValue: null,
 		customValue: null,
+		minValue: 28,
+		maxValue: 100,
 	},
 	buttonLetterSpacing: {
 		styleProperty: "letterSpacing",
 		defaultValue: null,
 		customValue: null,
+		minValue: 0,
+		maxValue: 8,
 	},
 	buttonRemover: {
 		status: false,
@@ -63,10 +69,31 @@ function changeFont(font) {
 	}
 }
 
-function changeFontSize(fontSize) {
+// function changeFontSize(fontSize) {
+// 	const allParagraphes = document.querySelectorAll("*");
+// 	allParagraphes.forEach((tag) => {
+// 		tag.style.fontSize = fontSize + "px";
+// 		tag.style.lineHeight = "1.5em";
+// 		tag.style.boxSizing = "border-box";
+// 		tag.style.overflowWrap = "break-word";
+// 		tag.style.hyphens = "auto";
+// 		settings.buttonFontSize.customValue = window
+// 			.getComputedStyle(tag, null)
+// 			.getPropertyValue("font-size");
+// 	});
+// 	console.log("🐣 update font-size is:", settings);
+// }
+
+function changeFontSize(sliderValue, minValue, maxValue) {
 	const allParagraphes = document.querySelectorAll("*");
+	const defaultValue = settings.buttonFontSize.defaultValue;
+
 	allParagraphes.forEach((tag) => {
-		tag.style.fontSize = fontSize + "px";
+		// let newValue = ((parseFloat(defaultValue) - minValue) * 100 / (maxValue - minValue));
+		let newValue = (minValue + ((sliderValue/100) * (maxValue - minValue)));
+		tag.style.fontSize = newValue + "px";
+		console.log("slider value is:", sliderValue);
+		console.log("🦐 new value is: ", tag.style.fontSize);
 		tag.style.lineHeight = "1.5em";
 		tag.style.boxSizing = "border-box";
 		tag.style.overflowWrap = "break-word";
@@ -120,12 +147,15 @@ buttonFont.addEventListener("change", () => {
 });
 
 buttonFontSize.addEventListener("input", (event) => {
-	let fontSize = event.target.value;
+	let sliderValue = event.target.value;
+	let minValue = settings.buttonFontSize.minValue;
+	let maxValue = settings.buttonFontSize.maxValue;
+	console.log("🐢 min value and max value are:", minValue, maxValue);
 	chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
 		chrome.scripting.executeScript({
 			target: { tabId: tabs[0].id },
 			func: changeFontSize,
-			args: [fontSize],
+			args: [sliderValue, minValue, maxValue],
 		});
 	});
 });

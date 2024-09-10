@@ -4,8 +4,6 @@ const buttonLineHeight = document.querySelector("#line-height");
 const buttonLetterSpacing = document.querySelector("#letter-spacing");
 const buttonRemover = document.querySelector("#remover");
 const buttonReset = document.querySelector("#reset");
-const allTags =
-	"p, h1, h2, h3, h4, h5, h6, li, ul, ol, a, strong, em, i, span, q, th, td";
 
 let settings = {
 	buttonFont: {
@@ -34,15 +32,6 @@ let settings = {
 };
 
 // ------------ FONCTIONS POUR CUSTOMISER LA PAGE ------------ //
-
-// function changeFont() {
-// 	const allParagraphes = document.querySelectorAll(allTags);
-// 	allParagraphes.forEach((tag) => {
-// 		tag.style.fontFamily = "Tahoma";
-// 		settings.buttonFont.customValue = window.getComputedStyle(tag, null).getPropertyValue("font-family");
-// 	});
-// 	console.log("🦄 update font-family is:", settings);
-// };
 
 function changeFont(font) {
 	const allParagraphes = document.querySelectorAll("*");
@@ -75,7 +64,7 @@ function changeFont(font) {
 }
 
 function changeFontSize(fontSize) {
-	const allParagraphes = document.querySelectorAll(allTags);
+	const allParagraphes = document.querySelectorAll("*");
 	allParagraphes.forEach((tag) => {
 		tag.style.fontSize = fontSize + "px";
 		tag.style.lineHeight = "1.5em";
@@ -90,7 +79,7 @@ function changeFontSize(fontSize) {
 }
 
 function changeLineHeight(lineHeight) {
-	const allParagraphes = document.querySelectorAll(allTags);
+	const allParagraphes = document.querySelectorAll("*");
 	allParagraphes.forEach((tag) => {
 		tag.style.lineHeight = lineHeight + "px";
 		settings.buttonLineHeight.customValue = window
@@ -101,7 +90,7 @@ function changeLineHeight(lineHeight) {
 }
 
 function changeLetterSpacing(letterSpacing) {
-	const allParagraphes = document.querySelectorAll(allTags);
+	const allParagraphes = document.querySelectorAll("*");
 	allParagraphes.forEach((tag) => {
 		tag.style.letterSpacing = letterSpacing + "px";
 		settings.buttonLetterSpacing.customValue = window
@@ -113,7 +102,8 @@ function changeLetterSpacing(letterSpacing) {
 
 console.log("🐍 initial settings object is:", settings);
 
-function removeDivs() {}
+// function removeDivs() {}
+
 
 // ------------ GESTION DES BOUTONS ------------ //
 
@@ -151,7 +141,7 @@ buttonLineHeight.addEventListener("input", (event) => {
 	});
 });
 
-buttonLetterSpacing.addEventListener("click", (event) => {
+buttonLetterSpacing.addEventListener("input", (event) => {
 	let letterSpacing = event.target.value;
 	chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
 		chrome.scripting.executeScript({

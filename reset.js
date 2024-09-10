@@ -2,11 +2,11 @@
 
 function resetValue() {
     // document.querySelector(".button-container").reset();
-	const allParagraphes = document.querySelectorAll(allTags);
+	const allParagraphes = document.querySelectorAll("*");
 	allParagraphes.forEach((tag) => {
 		tag.style.fontFamily = settings.buttonFont.defaultValue;
 		tag.style.fontSize = settings.buttonFontSize.defaultValue;
-		// tag.style.lineHeight = settings.buttonLineHeight.defaultValue;
+		tag.style.lineHeight = settings.buttonLineHeight.defaultValue;
 		tag.style.letterSpacing = settings.buttonLetterSpacing.defaultValue;
 	});
 	console.log("🐳 reset values are:", settings);

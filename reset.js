@@ -1,10 +1,11 @@
 function resetValue() {	
-	window.location.reload();	const allParagraphes = document.querySelectorAll("*");
-	// allParagraphes.forEach((tag) => {
-	// 	tag.style.fontFamily = settings.buttonFont.defaultValue;
-	// 	tag.style.fontSize = settings.buttonFontSize.defaultValue;
-	// 	tag.style.lineHeight = settings.buttonLineHeight.defaultValue;
-	// 	tag.style.letterSpacing = settings.buttonLetterSpacing.defaultValue;
+	window.location.reload(); 
+	const allParagraphes = document.querySelectorAll("*");
+	// allParagraphes.forEach((elm) => {
+	// 	elm.style.fontFamily = settings.buttonFont.defaultValue;
+	// 	elm.style.fontSize = settings.buttonFontSize.defaultValue;
+	// 	elm.style.lineHeight = settings.buttonLineHeight.defaultValue;
+	// 	elm.style.letterSpacing = settings.buttonLetterSpacing.defaultValue;
 	// });
 	console.log("🐳 reset values are:", settings);
 };

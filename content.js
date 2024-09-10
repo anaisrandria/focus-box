@@ -1,8 +1,8 @@
+const buttonRemover = document.querySelector("#remover");
 const buttonFont = document.querySelector("#font");
 const buttonFontSize = document.querySelector("#font-size");
 const buttonLineHeight = document.querySelector("#line-height");
 const buttonLetterSpacing = document.querySelector("#letter-spacing");
-const buttonRemover = document.querySelector("#remover");
 const buttonReset = document.querySelector("#reset");
 
 let settings = {
@@ -31,35 +31,46 @@ let settings = {
 	},
 };
 
+
 // ------------ FONCTIONS POUR CUSTOMISER LA PAGE ------------ //
 
 function changeFont(font) {
+	const link = document.createElement('link'); 
+	link.setAttribute("rel","stylesheet")
+	document.head.appendChild(link)
+
 	const allParagraphs = document.querySelectorAll("*");
 	console.log("Je suis dans change font");
 	console.log("font value is:", font);
 
-	if (font === "arial") {
-		console.log("Je suis dans Arial");
+	if (font === "Sniglet") {
+		link.setAttribute("href", "https://fonts.googleapis.com/css2?family=Sniglet:wght@400;800&display=swap")
+		console.log("Je suis dans Sniglet");
 		allParagraphs.forEach((tag) => {
-			tag.style.fontFamily = "Arial";
+			tag.style.fontFamily = "Sniglet";
 			settings.buttonFont.customValue = window
 				.getComputedStyle(tag, null)
 				.getPropertyValue("font-family");
 		});
-	} else if (font === "verdana") {
+
+	} else if (font === "Roboto") {
+		link.setAttribute("href", "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap")
 		allParagraphs.forEach((tag) => {
-			tag.style.fontFamily = "Verdana";
+			tag.style.fontFamily = "Roboto";
 			settings.buttonFont.customValue = window
 				.getComputedStyle(tag, null)
 				.getPropertyValue("font-family");
 		});
-	} else if (font === "helvetica") {
+
+	} else if (font === "Signika") {
+		link.setAttribute("href", "https://fonts.googleapis.com/css2?family=Signika:wght@300..700&display=swap")
 		allParagraphs.forEach((tag) => {
-			tag.style.fontFamily = "Helvetica";
+			tag.style.fontFamily = "Signika";
 			settings.buttonFont.customValue = window
 				.getComputedStyle(tag, null)
 				.getPropertyValue("font-family");
 		});
+		
 	} else if (font === "default") {
 		allParagraphs.forEach((tag) => {
 			tag.style.fontFamily = settings.buttonFont.defaultValue;
@@ -115,10 +126,17 @@ function changeLetterSpacing(letterSpacing) {
 
 console.log("🐍 initial settings object is:", settings);
 
-// function removeDivs() {}
-
 
 // ------------ GESTION DES BOUTONS ------------ //
+
+// buttonRemover.addEventListener("click", () => {
+// 	chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+// 		chrome.scripting.executeScript({
+// 			target: { tabId: tabs[0].id },
+// 			func: removeDivs,
+// 		});
+// 	});
+// });
 
 buttonFont.addEventListener("change", () => {
 	let fontValue = document.getElementById("font").value;
@@ -175,12 +193,3 @@ buttonReset.addEventListener("click", () => {
 		});
 	});
 });
-
-// buttonRemover.addEventListener("click", () => {
-// 	chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-// 		chrome.scripting.executeScript({
-// 			target: { tabId: tabs[0].id },
-// 			func: removeDivs,
-// 		});
-// 	});
-// });

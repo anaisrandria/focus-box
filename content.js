@@ -15,22 +15,16 @@ let settings = {
 		styleProperty: "fontSize",
 		defaultValue: null,
 		customValue: null,
-		minValue: 12,
-		maxValue: 48,
 	},
 	buttonLineHeight: {
 		styleProperty: "lineHeight",
 		defaultValue: null,
 		customValue: null,
-		minValue: 28,
-		maxValue: 100,
 	},
 	buttonLetterSpacing: {
 		styleProperty: "letterSpacing",
 		defaultValue: null,
 		customValue: null,
-		minValue: 0,
-		maxValue: 8,
 	},
 	buttonRemover: {
 		status: false,
@@ -40,28 +34,35 @@ let settings = {
 // ------------ FONCTIONS POUR CUSTOMISER LA PAGE ------------ //
 
 function changeFont(font) {
-	const allParagraphes = document.querySelectorAll("*");
+	const allParagraphs = document.querySelectorAll("*");
 	console.log("Je suis dans change font");
 	console.log("font value is:", font);
 
 	if (font === "arial") {
 		console.log("Je suis dans Arial");
-		allParagraphes.forEach((tag) => {
+		allParagraphs.forEach((tag) => {
 			tag.style.fontFamily = "Arial";
 			settings.buttonFont.customValue = window
 				.getComputedStyle(tag, null)
 				.getPropertyValue("font-family");
 		});
 	} else if (font === "verdana") {
-		allParagraphes.forEach((tag) => {
+		allParagraphs.forEach((tag) => {
 			tag.style.fontFamily = "Verdana";
 			settings.buttonFont.customValue = window
 				.getComputedStyle(tag, null)
 				.getPropertyValue("font-family");
 		});
 	} else if (font === "helvetica") {
-		allParagraphes.forEach((tag) => {
+		allParagraphs.forEach((tag) => {
 			tag.style.fontFamily = "Helvetica";
+			settings.buttonFont.customValue = window
+				.getComputedStyle(tag, null)
+				.getPropertyValue("font-family");
+		});
+	} else if (font === "default") {
+		allParagraphs.forEach((tag) => {
+			tag.style.fontFamily = settings.buttonFont.defaultValue;
 			settings.buttonFont.customValue = window
 				.getComputedStyle(tag, null)
 				.getPropertyValue("font-family");
@@ -69,31 +70,16 @@ function changeFont(font) {
 	}
 }
 
-// function changeFontSize(fontSize) {
-// 	const allParagraphes = document.querySelectorAll("*");
-// 	allParagraphes.forEach((tag) => {
-// 		tag.style.fontSize = fontSize + "px";
-// 		tag.style.lineHeight = "1.5em";
-// 		tag.style.boxSizing = "border-box";
-// 		tag.style.overflowWrap = "break-word";
-// 		tag.style.hyphens = "auto";
-// 		settings.buttonFontSize.customValue = window
-// 			.getComputedStyle(tag, null)
-// 			.getPropertyValue("font-size");
-// 	});
-// 	console.log("🐣 update font-size is:", settings);
-// }
-
-function changeFontSize(sliderValue, minValue, maxValue) {
-	const allParagraphes = document.querySelectorAll("*");
+function changeFontSize(sliderValue) {
+	const allParagraphs = document.querySelectorAll("*");
 	const defaultValue = settings.buttonFontSize.defaultValue;
 
-	allParagraphes.forEach((tag) => {
-		// let newValue = ((parseFloat(defaultValue) - minValue) * 100 / (maxValue - minValue));
-		let newValue = (minValue + ((sliderValue/100) * (maxValue - minValue)));
+	allParagraphs.forEach((tag) => {
+		let newValue = ((sliderValue) * parseFloat(defaultValue) / 100) + parseFloat(defaultValue);
 		tag.style.fontSize = newValue + "px";
+		console.log("new value is:", newValue);
 		console.log("slider value is:", sliderValue);
-		console.log("🦐 new value is: ", tag.style.fontSize);
+		console.log("default value is:", defaultValue);
 		tag.style.lineHeight = "1.5em";
 		tag.style.boxSizing = "border-box";
 		tag.style.overflowWrap = "break-word";
@@ -106,8 +92,8 @@ function changeFontSize(sliderValue, minValue, maxValue) {
 }
 
 function changeLineHeight(lineHeight) {
-	const allParagraphes = document.querySelectorAll("*");
-	allParagraphes.forEach((tag) => {
+	const allParagraphs = document.querySelectorAll("*");
+	allParagraphs.forEach((tag) => {
 		tag.style.lineHeight = lineHeight + "px";
 		settings.buttonLineHeight.customValue = window
 			.getComputedStyle(tag, null)
@@ -117,8 +103,8 @@ function changeLineHeight(lineHeight) {
 }
 
 function changeLetterSpacing(letterSpacing) {
-	const allParagraphes = document.querySelectorAll("*");
-	allParagraphes.forEach((tag) => {
+	const allParagraphs = document.querySelectorAll("*");
+	allParagraphs.forEach((tag) => {
 		tag.style.letterSpacing = letterSpacing + "px";
 		settings.buttonLetterSpacing.customValue = window
 			.getComputedStyle(tag, null)
@@ -148,14 +134,12 @@ buttonFont.addEventListener("change", () => {
 
 buttonFontSize.addEventListener("input", (event) => {
 	let sliderValue = event.target.value;
-	let minValue = settings.buttonFontSize.minValue;
-	let maxValue = settings.buttonFontSize.maxValue;
-	console.log("🐢 min value and max value are:", minValue, maxValue);
+	// let defaultValue = settings.buttonFontSize.defaultValue;
 	chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
 		chrome.scripting.executeScript({
 			target: { tabId: tabs[0].id },
 			func: changeFontSize,
-			args: [sliderValue, minValue, maxValue],
+			args: [sliderValue],
 		});
 	});
 });

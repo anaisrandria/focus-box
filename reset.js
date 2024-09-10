@@ -1,14 +1,11 @@
-// const buttonReset = document.querySelector("#reset"); -- déplacé vers content.js
-
-function resetValue() {
-    // document.querySelector(".button-container").reset();
-	const allParagraphes = document.querySelectorAll("*");
-	allParagraphes.forEach((tag) => {
-		tag.style.fontFamily = settings.buttonFont.defaultValue;
-		tag.style.fontSize = settings.buttonFontSize.defaultValue;
-		tag.style.lineHeight = settings.buttonLineHeight.defaultValue;
-		tag.style.letterSpacing = settings.buttonLetterSpacing.defaultValue;
-	});
+function resetValue() {	
+	window.location.reload();	const allParagraphes = document.querySelectorAll("*");
+	// allParagraphes.forEach((tag) => {
+	// 	tag.style.fontFamily = settings.buttonFont.defaultValue;
+	// 	tag.style.fontSize = settings.buttonFontSize.defaultValue;
+	// 	tag.style.lineHeight = settings.buttonLineHeight.defaultValue;
+	// 	tag.style.letterSpacing = settings.buttonLetterSpacing.defaultValue;
+	// });
 	console.log("🐳 reset values are:", settings);
 };
 

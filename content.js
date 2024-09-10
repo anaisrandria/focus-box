@@ -34,6 +34,8 @@ let settings = {
 
 // ------------ FONCTIONS POUR CUSTOMISER LA PAGE ------------ //
 
+// function removeDivs() {}
+
 function changeFont(font) {
 	const link = document.createElement('link'); 
 	link.setAttribute("rel","stylesheet")
@@ -86,11 +88,9 @@ function changeFontSize(sliderValue) {
 	const defaultValue = settings.buttonFontSize.defaultValue;
 
 	allParagraphs.forEach((tag) => {
-		let newValue = ((sliderValue) * parseFloat(defaultValue) / 100) + parseFloat(defaultValue);
-		tag.style.fontSize = newValue + "px";
-		console.log("new value is:", newValue);
-		console.log("slider value is:", sliderValue);
-		console.log("default value is:", defaultValue);
+		let newFontSize =
+			(sliderValue * parseFloat(defaultValue)) / 100 + parseFloat(defaultValue);
+		tag.style.fontSize = newFontSize + "px";
 		tag.style.lineHeight = "1.5em";
 		tag.style.boxSizing = "border-box";
 		tag.style.overflowWrap = "break-word";
@@ -102,10 +102,16 @@ function changeFontSize(sliderValue) {
 	console.log("🐣 update font-size is:", settings);
 }
 
-function changeLineHeight(lineHeight) {
+function changeLineHeight(sliderValue) {
 	const allParagraphs = document.querySelectorAll("*");
+	const defaultValue = settings.buttonLineHeight.defaultValue;
 	allParagraphs.forEach((tag) => {
-		tag.style.lineHeight = lineHeight + "px";
+		let newLineHeight =
+			(sliderValue * parseFloat(defaultValue)) / 100 + parseFloat(defaultValue);
+		tag.style.lineHeight = newLineHeight + "px";
+		console.log("new value is:", newLineHeight);
+		console.log("slider value is:", sliderValue);
+		console.log("default value is:", defaultValue);
 		settings.buttonLineHeight.customValue = window
 			.getComputedStyle(tag, null)
 			.getPropertyValue("line-height");
@@ -163,12 +169,12 @@ buttonFontSize.addEventListener("input", (event) => {
 });
 
 buttonLineHeight.addEventListener("input", (event) => {
-	let lineHeight = event.target.value;
+	let sliderValue = event.target.value;
 	chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
 		chrome.scripting.executeScript({
 			target: { tabId: tabs[0].id },
 			func: changeLineHeight,
-			args: [lineHeight],
+			args: [sliderValue],
 		});
 	});
 });

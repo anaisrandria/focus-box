@@ -34,47 +34,79 @@ let settings = {
 
 // ------------ FONCTIONS POUR CUSTOMISER LA PAGE ------------ //
 
-// function removeDivs() {}
-
 function changeFont(font) {
 	const link = document.createElement('link'); 
-	link.setAttribute("rel","stylesheet")
-	document.head.appendChild(link)
+	link.setAttribute("rel","stylesheet");
+	document.head.appendChild(link);
 
-	const allParagraphs = document.querySelectorAll("*");
+	const allTags = document.querySelectorAll("*");
 	console.log("Je suis dans change font");
 	console.log("font value is:", font);
 
-	if (font === "Sniglet") {
-		link.setAttribute("href", "https://fonts.googleapis.com/css2?family=Sniglet:wght@400;800&display=swap")
-		console.log("Je suis dans Sniglet");
-		allParagraphs.forEach((tag) => {
-			tag.style.fontFamily = "Sniglet";
-			settings.buttonFont.customValue = window
-				.getComputedStyle(tag, null)
-				.getPropertyValue("font-family");
-		});
+	const style = document.createElement("style");
 
-	} else if (font === "Roboto") {
-		link.setAttribute("href", "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap")
-		allParagraphs.forEach((tag) => {
+	if (font === "Roboto") {
+		link.setAttribute("href", "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap");
+		allTags.forEach((tag) => {
 			tag.style.fontFamily = "Roboto";
 			settings.buttonFont.customValue = window
 				.getComputedStyle(tag, null)
 				.getPropertyValue("font-family");
 		});
-
+		
 	} else if (font === "Signika") {
-		link.setAttribute("href", "https://fonts.googleapis.com/css2?family=Signika:wght@300..700&display=swap")
-		allParagraphs.forEach((tag) => {
+		link.setAttribute("href", "https://fonts.googleapis.com/css2?family=Signika:wght@300..700&display=swap");
+		allTags.forEach((tag) => {
 			tag.style.fontFamily = "Signika";
+			settings.buttonFont.customValue = window
+				.getComputedStyle(tag, null)
+				.getPropertyValue("font-family");
+		});
+
+	} else if (font === "OpenDyslexic") {
+		style.innerHTML = 
+		`@font-face {
+			font-family: "OpenDyslexic";
+			src: url('${chrome.runtime.getURL('fonts/open_dyslexic/OpenDyslexic-Bold.otf')}') format("opentype"),
+			url('${chrome.runtime.getURL('fonts/open_dyslexic/OpenDyslexic-BoldItalic.otf')}') format("opentype"),
+			url('${chrome.runtime.getURL('fonts/open_dyslexic/OpenDyslexic-Italic.otf')}') format("opentype"),
+			url('${chrome.runtime.getURL('fonts/open_dyslexic/OpenDyslexic-Regular.otf')}') format("opentype"),
+		
+		body, * {
+			font-family: 'OpenDyslexic';
+		}`
+		console.log("🐖 style is:", style);
+		;
+		document.head.appendChild(style);
+		allTags.forEach((tag) => {
+			tag.style.fontFamily = "OpenDyslexic";
+			settings.buttonFont.customValue = window
+				.getComputedStyle(tag, null)
+				.getPropertyValue("font-family");
+		});
+
+	} else if (font === "Lexia") {
+		style.innerHTML = 
+		`@font-face {
+			font-family: "Lexia";
+			src: url('${chrome.runtime.getURL('fonts/lexia_readable/LexieReadable-Bold.ttf')}') format("truetype"),
+			url('${chrome.runtime.getURL('fonts/lexia_readable/LexieReadable-Regular.ttf')}') format("truetype"),
+		
+		body, * {
+			font-family: 'Lexia';
+		}`
+		console.log("🐖 style is:", style);
+		;
+		document.head.appendChild(style);
+		allTags.forEach((tag) => {
+			tag.style.fontFamily = "Lexia";
 			settings.buttonFont.customValue = window
 				.getComputedStyle(tag, null)
 				.getPropertyValue("font-family");
 		});
 		
 	} else if (font === "default") {
-		allParagraphs.forEach((tag) => {
+		allTags.forEach((tag) => {
 			tag.style.fontFamily = settings.buttonFont.defaultValue;
 			settings.buttonFont.customValue = window
 				.getComputedStyle(tag, null)
@@ -84,10 +116,10 @@ function changeFont(font) {
 }
 
 function changeFontSize(sliderValue) {
-	const allParagraphs = document.querySelectorAll("*");
+	const allTags = document.querySelectorAll("*");
 	const defaultValue = settings.buttonFontSize.defaultValue;
 
-	allParagraphs.forEach((tag) => {
+	allTags.forEach((tag) => {
 		let newFontSize =
 			(sliderValue * parseFloat(defaultValue)) / 100 + parseFloat(defaultValue);
 		tag.style.fontSize = newFontSize + "px";
@@ -102,10 +134,10 @@ function changeFontSize(sliderValue) {
 	console.log("🐣 update font-size is:", settings);
 }
 
-function changeLineHeight(sliderValue) {
-	const allParagraphs = document.querySelectorAll("*");
+function changeLineHeight(sliderValue) { 
+	const allTags = document.querySelectorAll("*");
 	const defaultValue = settings.buttonLineHeight.defaultValue;
-	allParagraphs.forEach((tag) => {
+	allTags.forEach((tag) => {
 		let newLineHeight =
 			(sliderValue * parseFloat(defaultValue)) / 100 + parseFloat(defaultValue);
 		tag.style.lineHeight = newLineHeight + "px";
@@ -120,8 +152,8 @@ function changeLineHeight(sliderValue) {
 }
 
 function changeLetterSpacing(letterSpacing) {
-	const allParagraphs = document.querySelectorAll("*");
-	allParagraphs.forEach((tag) => {
+	const allTags = document.querySelectorAll("*");
+	allTags.forEach((tag) => {
 		tag.style.letterSpacing = letterSpacing + "px";
 		settings.buttonLetterSpacing.customValue = window
 			.getComputedStyle(tag, null)
@@ -134,15 +166,6 @@ console.log("🐍 initial settings object is:", settings);
 
 
 // ------------ GESTION DES BOUTONS ------------ //
-
-// buttonRemover.addEventListener("click", () => {
-// 	chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-// 		chrome.scripting.executeScript({
-// 			target: { tabId: tabs[0].id },
-// 			func: removeDivs,
-// 		});
-// 	});
-// });
 
 buttonFont.addEventListener("change", () => {
 	let fontValue = document.getElementById("font").value;

@@ -1,9 +1,9 @@
 // ------------ FONCTIONS POUR RECUPERER LES VALEURS PAR DEFAUT ------------ // 
 
 function getDefaultValue() {
-	const allParagraphes = document.querySelectorAll("*");
+	const allTags = document.querySelectorAll("*");
     if (!settings.buttonFont.defaultValue) {
-        allParagraphes.forEach((tag) => {
+        allTags.forEach((tag) => {
             settings.buttonFont.defaultValue = window.getComputedStyle(tag, null).getPropertyValue("font-family");
             settings.buttonFontSize.defaultValue = window.getComputedStyle(tag, null).getPropertyValue("font-size");
             settings.buttonLineHeight.defaultValue = window.getComputedStyle(tag, null).getPropertyValue("line-height");

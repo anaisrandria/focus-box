@@ -14,13 +14,22 @@
   "action": {
     "default_popup": "popup.html"
   },
+  "web_accessible_resources": [
+    {
+      "resources": 
+        ["fonts/open_dyslexic/OpenDyslexic-Bold.otf",
+        "fonts/open_dyslexic/OpenDyslexic-BoldItalic.otf", 
+        "fonts/open_dyslexic/OpenDyslexic-Italic.otf", 
+        "fonts/open_dyslexic/OpenDyslexic-Regular.otf", 
+        "fonts/lexia_readable/LexieReadable-Bold.ttf", 
+        "fonts/lexia_readable/LexieReadable-Regular.ttf"],
+      "matches": ["<all_urls>"]
+    }
+  ],
   "content_scripts": [
     {
       "js": ["content.js", "default-settings.js", "reset.js"],
       "matches": ["<all_urls>"]
     }
-  ],
-  "background": {
-    "service-worker": "background.js"
-  }
+  ]
 }

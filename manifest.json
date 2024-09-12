@@ -10,7 +10,7 @@
     "128": "images/icon-128.png"
   },
   "host_permissions": ["<all_urls>"],
-  "permissions": ["activeTab", "scripting"],
+  "permissions": ["activeTab", "scripting", "storage"],
   "action": {
     "default_popup": "popup.html"
   },
@@ -28,7 +28,7 @@
   ],
   "content_scripts": [
     {
-      "js": ["content.js", "default-settings.js", "reset.js"],
+      "js": ["content.js", "default-settings.js", "reset.js", "storage.js"],
       "matches": ["<all_urls>"]
     }
   ]

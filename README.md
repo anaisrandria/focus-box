@@ -11,7 +11,7 @@
 Extension de navigateur Chrome permettant d’améliorer l’accessibilité pour les personnes dyslexiques, en permettant à l'utilisateur·ice de choisir une police adaptée pour améliorer son confort de lecture. 
 
 ## Type de projet :
-Projet collectif (3 personnes) réalisé en 7 jours dans le cadre de la formation Ada Tech School (2ème projet).
+Projet collectif (3 personnes) réalisé en 7 jours dans le cadre de la formation Ada Tech School (au deuxième mois de formation).
 
 ## Langages de programmation : 
 - JavaScript

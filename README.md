@@ -1,14 +1,9 @@
-<div id="header" align="center">
-  <h3>🚧 WORK IN PROGRESS 🚧</h3>
-</div>
-
-
-***
+# Chrome Extension
+<strong>🚧 WORK IN PROGRESS 🚧</strong>
 <br>
 
-# Chrome Extension
 ## Descriptif :
-Extension de navigateur Chrome permettant d’améliorer l’accessibilité pour les personnes dyslexiques, en permettant à l'utilisateur·ice de choisir une police adaptée pour améliorer son confort de lecture. 
+Extension de navigateur Chrome permettant d’améliorer l’accessibilité pour les personnes dyslexiques. L'objectif est de rendre l'expérience de lecture plus agréable à l'utilisateur·ice en lui permettant de choisir une police et une taille de police plus adaptées pour améliorer son confort de lecture. 
 
 ## Type de projet :
 Projet collectif (3 personnes) réalisé en 7 jours dans le cadre de la formation Ada Tech School (au deuxième mois de formation).
@@ -34,6 +29,8 @@ Projet collectif (3 personnes) réalisé en 7 jours dans le cadre de la formatio
 - Conceptualisation : Miro
 
 ## Démo : 
-https://github.com/user-attachments/assets/f8cb0f30-2338-463b-b18d-e483ff5dc2fd
+https://github.com/user-attachments/assets/f3f87dd3-2eb7-4cae-880e-8cc62d765f38
+
+
 
 

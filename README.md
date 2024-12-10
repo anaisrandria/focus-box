@@ -6,12 +6,15 @@ Extension de navigateur Chrome permettant d’améliorer l’accessibilité pour
 
 ## Caractéristiques :
 - État du projet : Terminé / Prototype
+  
 - Projet collectif (3 personnes) réalisé en 7 jours dans le cadre de la formation Ada Tech School (au deuxième mois de formation).
+  
 - Technologies utilisées :
   - Langages de programmation : JavaScript, HTML, CSS
   - IDE : VSCode
   - Suivi de projet : Jira
   - Conceptualisation : Miro
+    
 - Objectifs pédagogiques : 
   - Découvrir l’écosystème d’un navigateur
   - Explorer les mécanismes d’un navigateur (DOM, moteur exécution JS,...)

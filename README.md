@@ -12,7 +12,6 @@ Extension de navigateur Chrome permettant d’améliorer l’accessibilité pour
   - IDE : VSCode
   - Suivi de projet : Jira
   - Conceptualisation : Miro
-
 - Objectifs pédagogiques : 
   - Découvrir l’écosystème d’un navigateur
   - Explorer les mécanismes d’un navigateur (DOM, moteur exécution JS,...)
